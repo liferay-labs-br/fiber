@@ -1,16 +1,14 @@
-export default function render(vNode) {
-  if (vNode.split) return document.createTextNode(vNode);
+export default function render(vnode, parent) {
+	if (typeof vnode==='string') return document.createTextNode(vnode);
 
-  console.log(vNode);
+  let n = document.createElement(vnode.nodeName);
 
-  let n = document.createElement(vNode.nodeName);
+  let a = vnode.attributes || {};
+  Object.keys(a).forEach( k => n.setAttribute(k, a[k]) );
 
-  let a = vNode.attributes || {};
-  Objects.keys(a).forEach(k => n.setAttribute(k, a[k]));
+  (vnode.children || []).forEach( c => n.appendChild(render(c)) );
 
-  (vNode.children || []).forEach( c => n.appendChild(render(c)));
-
-  //if (parent && n.parentNode!==parent) parent.appendChild(n);
+  parent.appendChild(n);
 
   return n;
 }
