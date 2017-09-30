@@ -1,0 +1,60 @@
+{
+  "name": "fiber",
+  "version": "0.0.1",
+  "description": "The framework specialized in animated components.",
+  "main": "build/fiber.js",
+  "dev:main": "src/fiber.js",
+  "license": "MIT",
+  "author": "Matuzalém Teles <matuzalemteles@gmail.com>",
+  "scripts": {
+    "build": "npm-run-all --silent clean -p rollup:umd -p minify:umd -s size",
+    "clean": "rimraf build && mkdirp build",
+    "rollup:umd": "rollup -c",
+    "minify:umd": "uglifyjs build/fiber.js -cm -o build/fiber.js --in-source-map build/fiber.js.map --source-map filename=build/fiber.js.map",
+    "test": "jest --coverage",
+    "test:watch": "yarn run test --watch",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "size": "echo \"Gzipped Size: $(gzip-size $npm_package_main)\"",
+    "prepublish": "yarn run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matuzalemsteles/fiber.git"
+  },
+  "keywords": [
+    "fiber",
+    "vdom",
+    "jsx",
+    "hyperscript",
+    "components",
+    "dom"
+  ],
+  "homepage": "https://github.com/matuzalemsteles/fiber",
+  "bugs": {
+    "url": "https://github.com/matuzalemsteles/fiber/issues"
+  },
+  "files": [
+    "src",
+    "build"
+  ],
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babelrc-rollup": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "gzip-size-cli": "^2.1.0",
+    "jest": "^21.2.1",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "uglify-js": "^3.1.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  }
+}
