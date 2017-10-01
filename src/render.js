@@ -1,6 +1,8 @@
 export default function render(vnode, parent) {
 	if (typeof vnode==='string') return document.createTextNode(vnode);
 
+  if (typeof vnode === 'function') vnode = vnode();
+
   let n = document.createElement(vnode.nodeName);
 
   let a = vnode.attributes || {};
