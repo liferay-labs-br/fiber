@@ -1,4 +1,6 @@
 export default function render(vnode, parent) {
+	if (vnode==null || typeof vnode==='boolean') vnode = '';
+
 	if (typeof vnode==='string') return document.createTextNode(vnode);
 
   if (typeof vnode === 'function') vnode = vnode();
