@@ -6,10 +6,12 @@
  *
  * @providesModule Fiber
  */
+import Component from './component.js'
 import jsx from './jsx.js';
 import render from './render.js';
 
 export {
+  Component,
   jsx,
   render
 }
