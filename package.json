@@ -10,7 +10,7 @@
     "build": "npm-run-all --silent clean -p rollup:umd -p minify:umd -s size",
     "clean": "rimraf build && mkdirp build",
     "rollup:umd": "rollup -c",
-    "minify:umd": "uglifyjs build/fiber.js -cm -o build/fiber.js --in-source-map build/fiber.js.map --source-map filename=build/fiber.js.map",
+    "minify:umd": "uglifyjs build/fiber.js -cm -o build/fiber.js",
     "test": "jest --coverage",
     "test:watch": "yarn run test --watch",
     "coverage": "cat ./coverage/lcov.info | coveralls",
@@ -27,7 +27,9 @@
     "jsx",
     "hyperscript",
     "components",
-    "dom"
+    "dom",
+    "motion",
+    "animation"
   ],
   "homepage": "https://github.com/matuzalemsteles/fiber",
   "bugs": {
