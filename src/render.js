@@ -5,6 +5,8 @@ export default function render(vnode, parent) {
 
   if (typeof vnode === 'function') vnode = vnode();
 
+	if (typeof vnode.nodeName === 'function') vnode = vnode.nodeName.prototype.render();
+
   let n = document.createElement(vnode.nodeName);
 
   let a = vnode.attributes || {};
