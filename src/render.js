@@ -12,7 +12,7 @@ export default function render(vnode, parent) {
 
   (vnode.children || []).forEach( c => n.appendChild(render(c)) );
 
-  parent.appendChild(n);
+  if (parent) parent.appendChild(n);
 
   return n;
 }
