@@ -5,9 +5,18 @@
   "main": "build/fiber.js",
   "dev:main": "src/fiber.js",
   "license": "MIT",
-  "author": "Matuzalém Teles <matuzalemteles@gmail.com>",
+  "author": [
+    {
+      "name" : "Matuzalém Teles",
+      "email" : "matuzalemteles@gmail.com"
+    },
+    {
+      "name" : "Clovis Neto",
+      "email" : "clovisdasilvaneto@gmail.com"
+    }
+  ],
   "scripts": {
-    "build": "npm-run-all --silent clean -p rollup:umd -p minify:umd -s size",
+    "build": "npm-run-all --silent rollup:umd -p minify:umd -s size",
     "clean": "rimraf build && mkdirp build",
     "rollup:umd": "rollup -c",
     "minify:umd": "uglifyjs build/fiber.js -cm -o build/fiber.js",
