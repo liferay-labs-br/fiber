@@ -1,20 +1,15 @@
-import Component from './component.js';
+import { Component } from './component.js';
 
-export default function createComponent(Ctor, props, context) {
-  let inst;
+export default function createComponent(Constructor, props, context) {
+  let instance;
 
-  if (Ctor.prototype && Ctor.prototype.render) {
-    inst = new Ctor(props, context);
-    Component.call(inst, props, context);
+  if (Constructor.prototype && Constructor.prototype.render) {
+    instance = new Constructor(props, context);
+    Component.call(instance, props, context, true);
+    instance = instance.render();
   } else {
-    inst = new Component(props, context);
-    inst.constructor = Ctor;
-    inst.render = doRender;
+    instance = Constructor();
   }
 
-  return Ctor.prototype.render;
-}
-
-function doRender(props, state, context) {
-  return this.constructor(props, context);
+  return instance;
 }

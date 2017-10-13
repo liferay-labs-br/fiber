@@ -1,3 +1,5 @@
+import { buildComponentFromVNode } from './component.js';
+
 export default function render(vnode, parent) {
 	if (vnode==null || typeof vnode==='boolean') vnode = '';
 
@@ -5,7 +7,7 @@ export default function render(vnode, parent) {
 
   if (typeof vnode === 'function') vnode = vnode();
 
-	if (typeof vnode.nodeName === 'function') vnode = vnode.nodeName.prototype.render();
+	if (typeof vnode.nodeName === 'function') vnode = buildComponentFromVNode(vnode, {});
 
   let n = document.createElement(vnode.nodeName);
 
