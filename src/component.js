@@ -1,11 +1,11 @@
 import createComponent from './component-lifecycle.js';
 
 class Component {
-  constructor(props, context, isMount) {
+  constructor(props, context, isMounted) {
     this.props = props;
     this.context = context;
 
-    if (isMount) {
+    if (isMounted) {
       this.componentWillMount();
     }
   }
