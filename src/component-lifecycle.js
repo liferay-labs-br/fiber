@@ -8,7 +8,7 @@ export default function createComponent(Constructor, props, context) {
     Component.call(instance, props, context, true);
     instance = instance.render();
   } else {
-    instance = Constructor();
+    instance = Constructor(props);
   }
 
   return instance;
