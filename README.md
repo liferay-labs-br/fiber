@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://travis-ci.org/matuzalemsteles/fiber"><img src="https://travis-ci.org/matuzalemsteles/fiber.svg?branch=master" alt="Build Status"></a>
+  <a href="https://travis-ci.com/matuzalemsteles/fiber"><img src="https://travis-ci.com/matuzalemsteles/fiber.svg?token=8xmVFyif8RqZmqxb3peW&branch=master" alt="Build Status"></a>
   <a href='https://coveralls.io/github/matuzalemsteles/fiber?branch=master'><img src='https://coveralls.io/repos/github/matuzalemsteles/fiber/badge.svg?branch=master' alt='Coverage Status' /></a>
   <a href="https://unpkg.com/fiber/dist/fiber.js"><img src="http://img.badgesize.io/https://unpkg.com/fiber/dist/fiber.js?compression=gzip" alt="gzip"></a>
 </p>
