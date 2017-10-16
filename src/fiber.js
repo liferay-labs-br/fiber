@@ -7,19 +7,17 @@
  * @providesModule Fiber
  */
 import { Component } from './component'
-import { jsx, jsx as createElement } from './jsx';
+import { jsx as createElement } from './jsx';
 import render from './render';
 
 export default {
   createElement,
   Component,
-  jsx,
   render
 }
 
 export {
   createElement,
   Component,
-  jsx,
   render
 }
