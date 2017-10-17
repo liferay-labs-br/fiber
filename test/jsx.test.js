@@ -1,4 +1,4 @@
-import jsx from '../src/jsx.js';
+import { createElement } from '../src/fiber.js';
 
 describe('jsx', () => {
   it('shound return a object', () => {
@@ -8,8 +8,8 @@ describe('jsx', () => {
       children: [ 'Hello World!' ]
     };
 
-    expect(jsx('div', { id: 'app' }, 'Hello World!')).toEqual(object);
-    expect(jsx('div', null)).toEqual({nodeName: 'div', attributes: null, children: null});
+    expect(createElement('div', { id: 'app' }, 'Hello World!')).toEqual(object);
+    expect(createElement('div', null)).toEqual({nodeName: 'div', attributes: null, children: null});
   });
 
   it('should support element children', () => {
@@ -25,6 +25,6 @@ describe('jsx', () => {
       ]
     };
 
-    expect(jsx('div', null, jsx('div', { id: 'app' }, 'Hello World!'))).toEqual(object);
+    expect(createElement('div', null, createElement('div', { id: 'app' }, 'Hello World!'))).toEqual(object);
   });
 });
