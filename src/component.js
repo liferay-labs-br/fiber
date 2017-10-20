@@ -1,6 +1,12 @@
 import createComponent from './component-lifecycle.js';
 
 class Component {
+	
+  /**
+   * Constructor
+   * isMounted prevents the component call the componentWillMount() function
+   * when the user use the constructor in his Fiber component
+   */
   constructor(props, context, isMounted) {
     this.props = props;
     this.context = context;
