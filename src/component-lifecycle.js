@@ -1,15 +1,15 @@
 import { Component } from './component.js';
 
 export default function createComponent(Constructor, props, context) {
-  let instance;
+  let instance, vnode;
 
   if (Constructor.prototype && Constructor.prototype.render) {
     instance = new Constructor(props, context);
     Component.call(instance, props, context, true);
-    instance = instance.render();
+    vnode = instance.render();
   } else {
-    instance = Constructor(props);
+    instance = vnode = Constructor(props);
   }
 
-  return instance;
+  return {instance, vnode};
 }
