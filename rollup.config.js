@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import babelrc from 'babelrc-rollup';
+import eslint from 'rollup-plugin-eslint';
 
 const babelConfig = {
   'presets': [
@@ -21,6 +22,11 @@ export default {
     sourcemap: true
   },
   plugins: [
+    eslint({
+      exclude: [
+        'node_modules/**'
+      ]
+    }),
     babel(babelrc({
       addExternalHelpersPlugin: false,
       config: babelConfig,
