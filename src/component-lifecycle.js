@@ -1,4 +1,4 @@
-import { Component } from './component.js';
+import { Component } from './component';
 
 export default function createComponent(Constructor, props, context) {
   let instance;

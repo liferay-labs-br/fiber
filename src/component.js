@@ -1,4 +1,4 @@
-import createComponent from './component-lifecycle.js';
+import createComponent from './component-lifecycle';
 
 class Component {
 	
@@ -48,9 +48,9 @@ class Component {
 const buildComponentFromVNode = (vnode, context) => {
   let props = Object.assign({}, vnode.attributes);
   return createComponent(vnode.nodeName, props, context);
-}
+};
 
 export {
   Component,
-  buildComponentFromVNode
-}
+  buildComponentFromVNode,
+};
