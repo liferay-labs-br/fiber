@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matuzalemsteles/fiber.git"
+    "url": "https://github.com/liferay-labs-br/fiber.git"
   },
   "keywords": [
     "fiber",
@@ -40,9 +40,9 @@
     "motion",
     "animation"
   ],
-  "homepage": "https://github.com/matuzalemsteles/fiber",
+  "homepage": "https://github.com/liferay-labs-br/fiber",
   "bugs": {
-    "url": "https://github.com/matuzalemsteles/fiber/issues"
+    "url": "https://github.com/liferay-labs-br/fiber/issues"
   },
   "files": [
     "src",
