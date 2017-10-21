@@ -1,24 +1,27 @@
-import { buildComponentFromVNode } from '../isomorphic/createComponent';
-import RenderUtils from '../utils/render-utils';
+import { buildComponentFromVNode } from './fiber';
 
-let FiberComponent;
+let component;
 
+/**
+ * @public
+ * @param vnode
+ * @param parent
+ */
 const render = (vnode, parent) => {
-	if (vnode == null || typeof vnode === 'boolean') vnode = '';
+	if (isNullOrBoolean(vnode)) return '';
 
-	if (typeof vnode==='string') return document.createTextNode(vnode);
+	if (isString(vnode)) return document.createTextNode(vnode);
 
-	if (typeof vnode.nodeName === 'function') {
-		FiberComponent = buildComponentFromVNode(vnode, {});
-		vnode = FiberComponent.vnode;
+	if (isFunction(vnode.nodeName)) {
+		component = buildComponentFromVNode(vnode, {});
+		vnode = component.vnode;
 	}
 
 	let node = document.createElement(vnode.nodeName);
 
-	let attrs = vnode.attributes || {};
+	let attributes = vnode.attributes || {};
 
-	let renderUtils = new RenderUtils(FiberComponent.instance, node, attrs);
-	renderUtils.formatAttributes();
+	setAttributes(component.instance, node, attributes);
 
 	(vnode.children || []).forEach( child => node.appendChild(render(child)) );
 
@@ -27,5 +30,81 @@ const render = (vnode, parent) => {
 	return node;
 }
 
+/**
+ * @private
+ * @param vnode
+ * @return {boolean}
+ */
+const isNullOrBoolean = (vnode) => {
+	if (vnode == null || typeof vnode === 'boolean') return true;
+	return false;
+}
+
+/**
+ * @private
+ * @param vnode
+ * @return {boolean}
+ */
+const isString = (vnode) => {
+	if (typeof vnode==='string') return true;
+	return false;
+}
+
+/**
+ * @private
+ * @param vnode
+ * @return {boolean}
+ */
+const isFunction = (vnode) => {
+	if (typeof vnode === 'function') return true;
+	return false;
+}
+
+/**
+ * @private
+ * @param component
+ * @param node
+ * @param attributes
+ */
+const setAttributes = (component, node, attributes) => {
+	Object.keys(attributes).forEach(attr => {
+		if (attributes[attr] === 'null' || attributes[attr] === 'undefined' || !attributes[attr]) return;
+
+		if (isEvent(attr)) return addEventListener(component, node, attr, attributes);
+
+		node.setAttribute(attr, attributes[attr]);
+	});
+}
+
+/**
+ * @private
+ * @param component
+ * @param node
+ * @param attr
+ * @param attributes
+ */
+const addEventListener = (component, node, attr, attributes) => {
+	let eventName = extractEventName(attr);
+
+	node.addEventListener(eventName, attributes[attr].bind(component));
+}
+
+/**
+ * @private
+ * @param attr
+ * @return {boolean}
+ */
+const isEvent = (attr) => {
+	return /^on/.test(attr);
+}
+
+/**
+ * @private
+ * @param attr
+ * @return {string}
+ */
+const extractEventName = (attr) => {
+	return attr.slice('2').toLowerCase();
+}
 
 export default render;
