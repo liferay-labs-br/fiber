@@ -1,6 +1,6 @@
 import { createElement } from '../src/fiber.js';
 
-describe('jsx', () => {
+describe('createElement', () => {
   it('shound return a object', () => {
     let object = {
       nodeName: 'div',
