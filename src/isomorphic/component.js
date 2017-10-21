@@ -1,7 +1,4 @@
-import createComponent from './component-lifecycle.js';
-
 class Component {
-	
   /**
    * Constructor
    * isMounted prevents the component call the componentWillMount() function
@@ -40,17 +37,9 @@ class Component {
    */
   componentDidUpdate() {}
 
-  setState(state, callback) {}
+  setState() {}
 
   render() {}
 }
 
-const buildComponentFromVNode = (vnode, context) => {
-  let props = Object.assign({}, vnode.attributes);
-  return createComponent(vnode.nodeName, props, context);
-}
-
-export {
-  Component,
-  buildComponentFromVNode
-}
+export default Component;
