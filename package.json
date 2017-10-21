@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "The framework specialized in animated components.",
   "main": "build/fiber.js",
-  "dev:main": "src/fiber.js",
+  "jsnext:main": "src/fiber.js",
   "license": "MIT",
   "author": [
     {
