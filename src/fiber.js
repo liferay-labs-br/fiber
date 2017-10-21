@@ -6,9 +6,9 @@
  *
  * @providesModule Fiber
  */
-import { Component } from './component'
+import Component from './isomorphic/component'
 import createElement from './isomorphic/element';
-import render from './render';
+import render from './renderers/render';
 
 export default {
   createElement,
