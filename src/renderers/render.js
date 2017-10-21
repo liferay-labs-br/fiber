@@ -1,4 +1,4 @@
-import { buildComponentFromVNode } from './fiber';
+import { buildComponentFromVNode } from '../isomorphic/createComponent';
 
 let component;
 
