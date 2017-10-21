@@ -31,9 +31,9 @@ const render = (vnode, parent) => {
 }
 
 /**
- * @private
  * @param vnode
  * @return {boolean}
+ * @internal
  */
 const isNullOrBoolean = (vnode) => {
 	if (vnode == null || typeof vnode === 'boolean') return true;
@@ -41,9 +41,9 @@ const isNullOrBoolean = (vnode) => {
 }
 
 /**
- * @private
  * @param vnode
  * @return {boolean}
+ * @internal
  */
 const isString = (vnode) => {
 	if (typeof vnode==='string') return true;
@@ -51,9 +51,9 @@ const isString = (vnode) => {
 }
 
 /**
- * @private
  * @param vnode
  * @return {boolean}
+ * @internal
  */
 const isFunction = (vnode) => {
 	if (typeof vnode === 'function') return true;
@@ -61,10 +61,10 @@ const isFunction = (vnode) => {
 }
 
 /**
- * @private
  * @param component
  * @param node
  * @param attributes
+ * @internal
  */
 const setAttributes = (component, node, attributes) => {
 	Object.keys(attributes).forEach(attr => {
@@ -77,11 +77,11 @@ const setAttributes = (component, node, attributes) => {
 }
 
 /**
- * @private
  * @param component
  * @param node
  * @param attr
  * @param attributes
+ * @internal
  */
 const addEventListener = (component, node, attr, attributes) => {
 	let eventName = extractEventName(attr);
@@ -90,18 +90,18 @@ const addEventListener = (component, node, attr, attributes) => {
 }
 
 /**
- * @private
  * @param attr
  * @return {boolean}
+ * @internal
  */
 const isEvent = (attr) => {
 	return /^on/.test(attr);
 }
 
 /**
- * @private
  * @param attr
  * @return {string}
+ * @internal
  */
 const extractEventName = (attr) => {
 	return attr.slice('2').toLowerCase();
