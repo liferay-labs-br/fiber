@@ -32,7 +32,6 @@ export default {
       config: babelConfig,
       exclude: 'node_modules/**',
       plugins: [
-        "transform-react-jsx",
         "transform-object-rest-spread"
       ]
     }))
