@@ -1,3 +1,5 @@
+import updateQueue from './updateQueue'
+
 class Component {
   /**
    * Constructor
@@ -7,6 +9,9 @@ class Component {
   constructor(props, context, isMounted) {
     this.props = props;
     this.context = context;
+    this.state = this.state || {};
+
+    this.updater = updateQueue;
 
     if (isMounted) {
       this.componentWillMount();
@@ -37,7 +42,16 @@ class Component {
    */
   componentDidUpdate() {}
 
-  setState() {}
+  /**
+   * Sets a subset of the state. Always use this to mutate
+   * state. You should treat `this.state` as immutable.
+   * @param {object|function} state
+   */
+  setState(state) {
+    this.state = Object.assign(this.state, typeof state === 'function' ? state(this.state, this.props) : state);
+
+    this.updater.enqueueSetState(this, state);
+  }
 
   render() {}
 }
