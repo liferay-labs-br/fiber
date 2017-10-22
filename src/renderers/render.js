@@ -10,7 +10,7 @@ let component;
 const render = (vnode, parent) => {
 	if (isNullOrBoolean(vnode)) vnode = '';
 
-	if (isString(vnode)) return document.createTextNode(vnode);
+	if (isString(vnode) || isNumber(vnode)) return document.createTextNode(vnode);
 
 	if (isFunction(vnode.nodeName)) {
 		component = buildComponentFromVNode(vnode, {});
@@ -46,7 +46,17 @@ const isNullOrBoolean = (vnode) => {
  * @internal
  */
 const isString = (vnode) => {
-	if (typeof vnode==='string') return true;
+	if (typeof vnode === 'string') return true;
+	return false;
+}
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isNumber = (vnode) => {
+	if (typeof vnode === 'number') return true;
 	return false;
 }
 
