@@ -1,6 +1,7 @@
 import { buildComponentFromVNode } from '../isomorphic/createComponent';
 
 let component;
+let initialVnode;
 
 /**
  * @public
@@ -8,20 +9,28 @@ let component;
  * @param parent
  */
 const render = (vnode, parent) => {
+	initialVnode = vnode;
+
 	if (isFunction(vnode.nodeName)) {
 		component = buildComponentFromVNode(vnode, {});
 		vnode = component.vnode;
+		component = component.instance;
 	}
 
 	if (isNullOrBoolean(vnode)) vnode = '';
 
 	if (isString(vnode)) return document.createTextNode(vnode);
 
+	if (isDef(vnode)) {
+		vnode = initialVnode;
+		vnode.nodeName = vnode.nodeName();
+	};
+
 	let node = document.createElement(vnode.nodeName);
 
 	let attributes = vnode.attributes || {};
 
-	setAttributes(component.instance, node, attributes);
+	setAttributes(component, node, attributes);
 
 	(vnode.children || []).forEach( child => node.appendChild(render(child)) );
 
@@ -57,6 +66,16 @@ const isString = (vnode) => {
  */
 const isFunction = (vnode) => {
 	if (typeof vnode === 'function') return true;
+	return false;
+}
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isDef = (vnode) => {
+	if (typeof vnode === 'undefined') return true;
 	return false;
 }
 
