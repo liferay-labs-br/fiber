@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should create empty node <div /> 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`render should create empty node <p /> 1`] = `
+<div>
+  <p />
+</div>
+`;
+
+exports[`render should create empty nodes <foo /> and <bar> 1`] = `
+<div>
+  <foo />
+  <bar />
+</div>
+`;
+
+exports[`render should nest empty nodes 1`] = `
+<div>
+  <div>
+    <p />
+    <foo />
+    <bar />
+  </div>
+</div>
+`;
+
+exports[`render should not render boolean false 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`render should not render boolean true 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`render should not render falsey values 1`] = `
+<div>
+  <div>
+    
+    
+    
+    0
+    NaN
+  </div>
+</div>
+`;
+
+exports[`render should not render null 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`render should not render undefined 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`render should render NaN as text content 1`] = `
+<div>
+  NaN
+</div>
+`;
+
+exports[`render should render numbers (0) as text content 1`] = `
+<div>
+  0
+</div>
+`;
+
+exports[`render should render strings as text content 1`] = `
+<div>
+  Hello world
+</div>
+`;
