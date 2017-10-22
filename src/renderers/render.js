@@ -8,7 +8,7 @@ let component;
  * @param parent
  */
 const render = (vnode, parent) => {
-	if (isNullOrBoolean(vnode)) return '';
+	if (isNullOrBoolean(vnode)) vnode = '';
 
 	if (isString(vnode)) return document.createTextNode(vnode);
 
