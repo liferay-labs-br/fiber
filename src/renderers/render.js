@@ -8,14 +8,14 @@ let component;
  * @param parent
  */
 const render = (vnode, parent) => {
-	if (isNullOrBoolean(vnode)) return '';
-
-	if (isString(vnode)) return document.createTextNode(vnode);
-
 	if (isFunction(vnode.nodeName)) {
 		component = buildComponentFromVNode(vnode, {});
 		vnode = component.vnode;
 	}
+
+	if (isNullOrBoolean(vnode)) vnode = '';
+
+	if (isString(vnode)) return document.createTextNode(vnode);
 
 	let node = document.createElement(vnode.nodeName);
 
