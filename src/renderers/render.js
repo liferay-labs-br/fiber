@@ -1,6 +1,7 @@
 import { buildComponentFromVNode } from '../isomorphic/createComponent';
 
 let component;
+let initialVnode;
 
 /**
  * @public
@@ -8,6 +9,19 @@ let component;
  * @param parent
  */
 const render = (vnode, parent) => {
+	initialVnode = vnode;
+
+	let returnRender = irender(vnode, initialVnode);
+
+	if (parent) parent.appendChild(returnRender);
+
+	return returnRender;
+}
+
+/**
+ * Internal of render.
+ */
+const irender = (vnode, initialVnode) => {
 	if (isNullOrBoolean(vnode)) vnode = '';
 
 	if (isString(vnode) || isNumber(vnode)) return document.createTextNode(vnode);
@@ -15,20 +29,24 @@ const render = (vnode, parent) => {
 	if (isFunction(vnode.nodeName)) {
 		component = buildComponentFromVNode(vnode, {});
 		vnode = component.vnode;
+		component = component.instance;
 	}
+
+	if (isDef(vnode)) {
+		vnode = initialVnode;
+		vnode.nodeName = vnode.nodeName();
+	};
 
 	let node = document.createElement(vnode.nodeName);
 
 	let attributes = vnode.attributes || {};
 
-	setAttributes(component.instance, node, attributes);
+	setAttributes(component, node, attributes);
 
 	(vnode.children || []).forEach( child => node.appendChild(render(child)) );
 
-	if (parent) parent.appendChild(node);
-
 	return node;
-}
+};
 
 /**
  * @param vnode
@@ -57,6 +75,16 @@ const isString = (vnode) => {
  */
 const isNumber = (vnode) => {
 	if (typeof vnode === 'number') return true;
+	return false;
+}
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isDef = (vnode) => {
+	if (typeof vnode === 'undefined') return true;
 	return false;
 }
 
