@@ -65,6 +65,14 @@ exports[`render should not render undefined 1`] = `
 </div>
 `;
 
+exports[`render should not render when function return bool false 1`] = `<div />`;
+
+exports[`render should not render when function return bool true 1`] = `<div />`;
+
+exports[`render should not render when function return empty 1`] = `<div />`;
+
+exports[`render should not render when function return string 1`] = `<div />`;
+
 exports[`render should render NaN as text content 1`] = `
 <div>
   NaN

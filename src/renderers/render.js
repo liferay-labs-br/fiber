@@ -11,11 +11,11 @@ let initialVnode;
 const render = (vnode, parent) => {
 	initialVnode = vnode;
 
-	let returnRender = irender(vnode, initialVnode);
+	let node = irender(vnode, initialVnode);
 
-	if (parent) parent.appendChild(returnRender);
+	if (node.nodeName !== 'UNDEFINED' && parent) parent.appendChild(node);
 
-	return returnRender;
+	return node;
 }
 
 /**

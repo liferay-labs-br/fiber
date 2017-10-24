@@ -99,4 +99,44 @@ describe('render', () => {
 
     expect(artboard).toMatchSnapshot();
   });
+
+  it('should not render when function return empty', () => {
+    let Foo = () => {
+      return;
+    };
+
+    render(Foo, artboard);
+
+    expect(artboard).toMatchSnapshot();
+  });
+
+  it('should not render when function return bool true', () => {
+    let Foo = () => {
+      return true;
+    };
+
+    render(Foo, artboard);
+
+    expect(artboard).toMatchSnapshot();
+  });
+
+  it('should not render when function return bool false', () => {
+    let Foo = () => {
+      return false;
+    };
+
+    render(Foo, artboard);
+
+    expect(artboard).toMatchSnapshot();
+  });
+
+  it('should not render when function return string', () => {
+    let Foo = () => {
+      return 'Foo';
+    };
+
+    render(Foo, artboard);
+
+    expect(artboard).toMatchSnapshot();
+  })
 });
