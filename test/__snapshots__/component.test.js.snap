@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should not render the onClick event 1`] = `
+<div>
+  <div
+    id="app"
+  >
+    Foo bar
+  </div>
+</div>
+`;
+
+exports[`render should not render when render of the class return bool false 1`] = `<div />`;
+
+exports[`render should not render when render of the class return bool true 1`] = `<div />`;
+
+exports[`render should not render when render of the class return string 1`] = `<div />`;
+
+exports[`render should render class with nested children 1`] = `
+<div>
+  <div
+    id="App"
+  >
+    <div>
+      <h1>
+        Hello World!
+      </h1>
+      <p>
+        foo 
+        <span>
+          bar
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;
