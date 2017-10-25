@@ -1,5 +1,7 @@
 import { render, createElement } from '../src/fiber';
 
+let Foo;
+
 describe('render', () => {
   let artboard;
 
@@ -15,6 +17,10 @@ describe('render', () => {
   afterAll(() => {
     artboard.parentNode.removeChild(artboard);
 		artboard = null;
+
+    if (Foo) {
+      Foo.dispose();
+    }
   });
 
   it('should create empty node <div />', () => {
@@ -138,5 +144,15 @@ describe('render', () => {
     render(Foo, artboard);
 
     expect(artboard).toMatchSnapshot();
-  })
+  });
+
+  it('should not render when function return undefined', () => {
+    let Foo = () => {
+      return undefined;
+    };
+
+    render(Foo, artboard);
+
+    expect(artboard).toMatchSnapshot();
+  });
 });
