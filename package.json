@@ -20,7 +20,7 @@
     "clean": "rimraf build && mkdirp build",
     "rollup:umd": "rollup -c",
     "minify:umd": "uglifyjs build/fiber.js -cm -o build/fiber.js",
-    "test": "jest --coverage && bundlesize",
+    "test": "jest --coverage --verbose && bundlesize",
     "test:watch": "yarn run test --watch",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "size": "echo \"Gzipped Size: $(gzip-size $npm_package_main)\"",
