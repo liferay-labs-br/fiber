@@ -1,12 +1,14 @@
 import renderFactory from '../isomorphic/render';
 
+let component;
+
 /**
  * @public
  * @param vnode
  * @param parent
  */
 const render = (vnode, parent) => {
-	let node = irender(vnode);
+	let node = irender(vnode, component);
 
 	if (node.nodeName !== 'UNDEFINED' && parent) parent.appendChild(node);
 
@@ -16,8 +18,8 @@ const render = (vnode, parent) => {
 /**
  * Internal of render.
  */
-const irender = (vnode) =>
-	renderFactory(vnode, (args) => {
+const irender = (vnode, component) =>
+	renderFactory(vnode, component, (args) => {
 		if (typeof args === 'object') {
 			let { vnode, component } = args;
 			let node = document.createElement(vnode.nodeName);
