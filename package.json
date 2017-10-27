@@ -17,7 +17,6 @@
   ],
   "scripts": {
     "build": "npm-run-all --silent rollup:umd -p minify:umd -s size",
-    "dev": "npm-run-all --silent rollup:umd",
     "clean": "rimraf build && mkdirp build",
     "rollup:umd": "rollup -c",
     "minify:umd": "uglifyjs build/fiber.js -cm -o build/fiber.js",

@@ -1,6 +1,7 @@
-import renderFactory from '../isomorphic/render';
+import { buildComponentFromVNode } from '../isomorphic/createComponent';
 
 let component;
+let initialVnode;
 
 /**
  * @public
@@ -8,7 +9,9 @@ let component;
  * @param parent
  */
 const render = (vnode, parent) => {
-	let node = irender(vnode, component);
+	initialVnode = vnode;
+
+	let node = irender(vnode, initialVnode);
 
 	if (node.nodeName !== 'UNDEFINED' && parent) parent.appendChild(node);
 
@@ -18,22 +21,82 @@ const render = (vnode, parent) => {
 /**
  * Internal of render.
  */
-const irender = (vnode, component) =>
-	renderFactory(vnode, component, (args) => {
-		if (typeof args === 'object') {
-			let { vnode, component } = args;
-			let node = document.createElement(vnode.nodeName);
-			let attributes = vnode.attributes || {};
+const irender = (vnode, initialVnode) => {
+	if (isNullOrBoolean(vnode)) vnode = '';
 
-			setAttributes(component, node, attributes);
+	if (isString(vnode) || isNumber(vnode)) return document.createTextNode(vnode);
 
-			(vnode.children || []).forEach( child => node.appendChild(render(child)) );
+	if (isFunction(vnode.nodeName)) {
+		component = buildComponentFromVNode(vnode, {});
+		vnode = component.vnode;
+		component = component.instance;
+	}
 
-			return node;
-		}
+	if (isDef(vnode)) {
+		vnode = initialVnode;
+		vnode.nodeName = vnode.nodeName();
+	};
 
-		return document.createTextNode(args)
-	});
+	let node = document.createElement(vnode.nodeName);
+
+	let attributes = vnode.attributes || {};
+
+	setAttributes(component, node, attributes);
+
+	(vnode.children || []).forEach( child => node.appendChild(render(child)) );
+
+	return node;
+};
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isNullOrBoolean = (vnode) => {
+	if (vnode == null || typeof vnode === 'boolean') return true;
+	return false;
+}
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isString = (vnode) => {
+	if (typeof vnode === 'string') return true;
+	return false;
+}
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isNumber = (vnode) => {
+	if (typeof vnode === 'number') return true;
+	return false;
+}
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isDef = (vnode) => {
+	if (typeof vnode === 'undefined') return true;
+	return false;
+}
+
+/**
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isFunction = (vnode) => {
+	if (typeof vnode === 'function') return true;
+	return false;
+}
 
 /**
  * @param component
