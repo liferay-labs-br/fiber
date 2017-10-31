@@ -2,6 +2,9 @@
   <a href="https://travis-ci.org/liferay-labs-br/fiber"><img src="https://travis-ci.org/liferay-labs-br/fiber.svg?branch=master" alt="Build Status"></a>
   <a href='https://coveralls.io/github/liferay-labs-br/fiber?branch=master'><img src='https://coveralls.io/repos/github/liferay-labs-br/fiber/badge.svg?branch=master' alt='Coverage Status' /></a>
   <a href="https://unpkg.com/fiber/dist/fiber.js"><img src="http://img.badgesize.io/https://unpkg.com/fiber/dist/fiber.js?compression=gzip" alt="gzip"></a>
+  <a href="https://github.com/liferay-labs-br/fiber"><img src="https://img.shields.io/github/last-commit/liferay-labs-br/fiber.svg" alt="GitHub last commit"></a>
+  <a href="https://github.com/liferay-labs-br/fiber"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="GitHub last commit"></a>
+  <a href="https://github.com/liferay-labs-br/fiber"><img src="https://img.shields.io/github/license/liferay-labs-br/fiber.svg" alt="License"></a>
 </p>
 <p align="center">Create components fast for <b>motion</b> animation.</p>
 
