@@ -1,4 +1,4 @@
-import { buildComponentFromVNode } from '../isomorphic/createComponent';
+import { buildComponentFromVNode } from '../../isomorphic/createComponent';
 
 let component;
 let initialVnode;
