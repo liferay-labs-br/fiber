@@ -7,8 +7,16 @@
  */
 import Component from './component';
 import createElement from './element';
+import renderFactory from './render';
+
+export default {
+  Component,
+  createElement,
+  renderFactory
+};
 
 export {
   Component,
-  createElement
+  createElement,
+  renderFactory
 };
