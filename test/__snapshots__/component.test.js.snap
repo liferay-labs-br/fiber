@@ -14,7 +14,11 @@ exports[`render should not render when render of the class return bool false 1`]
 
 exports[`render should not render when render of the class return bool true 1`] = `<div />`;
 
+exports[`render should not render when render of the class return empty 1`] = `<div />`;
+
 exports[`render should not render when render of the class return string 1`] = `<div />`;
+
+exports[`render should not render when render of the class return undefined 1`] = `<div />`;
 
 exports[`render should render class with nested children 1`] = `
 <div>
