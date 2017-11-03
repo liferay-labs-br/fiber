@@ -28,14 +28,15 @@ const irender = (vnode, initialVnode) => {
 
 	if (isFunction(vnode.nodeName)) {
 		component = buildComponentFromVNode(vnode, {});
-		vnode = component.vnode;
+
+		if (isDef(component.vnode)) {
+			vnode.nodeName = undefined;
+		} else {
+			vnode = component.vnode;
+		}
+
 		component = component.instance;
 	}
-
-	if (isDef(vnode)) {
-		vnode = initialVnode;
-		vnode.nodeName = vnode.nodeName();
-	};
 
 	let node = document.createElement(vnode.nodeName);
 
