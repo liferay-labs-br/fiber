@@ -1,14 +1,12 @@
 import { buildComponentFromVNode } from './createComponent'
 
-let component, initialVnode;
+let component;
 
 /**
  * Abstraction rule rendering and provide an
  * API to create any renderer on top of that.
  */
 const renderFactory = (vnode, callback) => {
-  initialVnode = vnode;
-
   if (isNullOrBoolean(vnode)) vnode = '';
 
 	if (isString(vnode) || isNumber(vnode)) return callback(vnode);
