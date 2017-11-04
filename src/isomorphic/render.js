@@ -27,7 +27,7 @@ const renderFactory = (vnode, callback) => {
 }
 
 /**
- *  When the parameter is boolean it returns true.
+ * When the parameter is boolean it returns true.
  * @param vnode
  * @return {boolean}
  * @internal
