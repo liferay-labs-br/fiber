@@ -7,14 +7,14 @@ let component;
  * API to create any renderer on top of that.
  */
 const renderFactory = (vnode, callback) => {
-  if (isNullOrBoolean(vnode)) vnode = '';
+  if (isNull(vnode) || isBoolean(vnode)) vnode = '';
 
 	if (isString(vnode) || isNumber(vnode)) return callback(vnode);
 
 	if (isFunction(vnode.nodeName)) {
 		component = buildComponentFromVNode(vnode, {});
 
-    if (isDef(component.vnode)) {
+    if (isNull(component.vnode)) {
 			vnode.nodeName = undefined;
 		} else {
 			vnode = component.vnode;
@@ -27,16 +27,30 @@ const renderFactory = (vnode, callback) => {
 }
 
 /**
+ *  When the parameter is boolean it returns true.
  * @param vnode
  * @return {boolean}
  * @internal
  */
-const isNullOrBoolean = (vnode) => {
-	if (vnode == null || typeof vnode === 'boolean') return true;
+const isBoolean = (vnode) => {
+	if (typeof vnode === 'boolean') return true;
 	return false;
 }
 
 /**
+ * When the parameter is null or undefined it returns true,
+ * this is because of the `==` comparator that activates coercion.
+ * @param vnode
+ * @return {boolean}
+ * @internal
+ */
+const isNull = (vnode) => {
+  if (vnode == null) return true;
+  return false;
+}
+
+/**
+ * When the parameter is string it returns true.
  * @param vnode
  * @return {boolean}
  * @internal
@@ -47,6 +61,7 @@ const isString = (vnode) => {
 }
 
 /**
+ * When the parameter is number it returns true.
  * @param vnode
  * @return {boolean}
  * @internal
@@ -57,16 +72,7 @@ const isNumber = (vnode) => {
 }
 
 /**
- * @param vnode
- * @return {boolean}
- * @internal
- */
-const isDef = (vnode) => {
-	if (typeof vnode === 'undefined') return true;
-	return false;
-}
-
-/**
+ * When the parameter is function it returns true.
  * @param vnode
  * @return {boolean}
  * @internal
