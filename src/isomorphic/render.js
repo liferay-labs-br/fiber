@@ -1,13 +1,21 @@
+/* @flow */
+
 import { buildComponentFromVNode } from './createComponent'
 
 let component;
+
+type Vnode = {
+  nodeName: string | ?void,
+  attributes: Array<any> | void,
+  children: string | Array<any> | void
+};
 
 /**
  * Abstraction rule rendering and provide an
  * API to create any renderer on top of that.
  */
-const renderFactory = (vnode, callback) => {
-  if (isNull(vnode) || isBoolean(vnode)) vnode = '';
+const renderFactory = (vnode: Vnode, callback: Function): (Object | string) => {
+  if (isNull(vnode) || isBoolean(vnode)) return callback('');
 
 	if (isString(vnode) || isNumber(vnode)) return callback(vnode);
 
@@ -32,7 +40,7 @@ const renderFactory = (vnode, callback) => {
  * @return {boolean}
  * @internal
  */
-const isBoolean = (vnode) => {
+const isBoolean = (vnode: any): boolean => {
 	if (typeof vnode === 'boolean') return true;
 	return false;
 }
@@ -44,7 +52,7 @@ const isBoolean = (vnode) => {
  * @return {boolean}
  * @internal
  */
-const isNull = (vnode) => {
+const isNull = (vnode: any): boolean => {
   if (vnode == null) return true;
   return false;
 }
@@ -55,7 +63,7 @@ const isNull = (vnode) => {
  * @return {boolean}
  * @internal
  */
-const isString = (vnode) => {
+const isString = (vnode: any): boolean => {
 	if (typeof vnode === 'string') return true;
 	return false;
 }
@@ -66,7 +74,7 @@ const isString = (vnode) => {
  * @return {boolean}
  * @internal
  */
-const isNumber = (vnode) => {
+const isNumber = (vnode: any): boolean => {
 	if (typeof vnode === 'number') return true;
 	return false;
 }
@@ -77,7 +85,7 @@ const isNumber = (vnode) => {
  * @return {boolean}
  * @internal
  */
-const isFunction = (vnode) => {
+const isFunction = (vnode: any): boolean => {
 	if (typeof vnode === 'function') return true;
 	return false;
 }
