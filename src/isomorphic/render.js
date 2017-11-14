@@ -6,10 +6,10 @@ let component;
  * Abstraction rule rendering and provide an
  * API to create any renderer on top of that.
  */
-const renderFactory = (vnode, callback) => {
-  if (isNull(vnode) || isBoolean(vnode)) vnode = '';
+const renderFactory = (vnode, {createInstance, createTextNode}) => {
+	if (isNull(vnode) || isBoolean(vnode)) vnode = '';
 
-	if (isString(vnode) || isNumber(vnode)) return callback(vnode);
+	if (isString(vnode) || isNumber(vnode)) return createTextNode(vnode);
 
 	if (isFunction(vnode.nodeName)) {
 		component = buildComponentFromVNode(vnode, {});
@@ -22,9 +22,9 @@ const renderFactory = (vnode, callback) => {
 
 		component = component.instance;
 	}
-
-  return callback({ vnode, component });
-}
+	
+	return createInstance(vnode, component);
+};
 
 /**
  * When the parameter is boolean it returns true.
