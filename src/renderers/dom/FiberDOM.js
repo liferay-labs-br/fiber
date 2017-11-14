@@ -5,17 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { Component, createElement } from './isomorphic/fiber';
-import { render } from './renderers/dom/fiberDOM';
+import render from './FiberDOMRender';
 
 export default {
-  createElement,
-  Component,
   render
 }
 
 export {
-  createElement,
-  Component,
   render
 }

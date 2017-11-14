@@ -1,5 +1,5 @@
-import { renderFactory } from '../../isomorphic/fiber';
-import { addEventListener, isEvent } from './events';
+import { renderFactory } from '../../isomorphic/Fiber';
+import { addEventListener, isEvent } from './FiberDOMEvents';
 
 /**
  * @public
@@ -22,11 +22,11 @@ const irender = (vnode) =>
 		createInstance(vnode, instance){
 			let node = document.createElement(vnode.nodeName);
 			let attributes = vnode.attributes || {};
-			
+
 			setAttributes(instance, node, attributes);
-			
+
 			(vnode.children || []).forEach( child => node.appendChild(render(child)) );
-			
+
 			return node;
 		},
 		createTextNode(text){

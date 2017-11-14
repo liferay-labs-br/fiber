@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import Component from './component';
-import createElement from './element';
-import renderFactory from './render';
+import Component from './FiberComponent';
+import createElement from './FiberElement';
+import renderFactory from './FiberRender';
 
 export default {
   Component,

@@ -1,4 +1,4 @@
-import { createElement } from '../src/fiber.js';
+import { createElement } from '../src/Fiber.js';
 
 describe('createElement', () => {
   it('shound return a object', () => {

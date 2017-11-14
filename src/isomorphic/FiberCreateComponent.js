@@ -1,4 +1,4 @@
-import Component from './component';
+import Component from './FiberComponent';
 
 const createComponent = (Constructor, props, context) => {
   let instance, vnode;
