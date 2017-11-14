@@ -18,20 +18,20 @@ const render = (vnode, parent) => {
  * Internal of render.
  */
 const irender = (vnode) =>
-	renderFactory(vnode, (args) => {
-		if (typeof args === 'object') {
-			let { vnode, component } = args;
+	renderFactory(vnode, {
+		createInstance(vnode, instance){
 			let node = document.createElement(vnode.nodeName);
 			let attributes = vnode.attributes || {};
-
-			setAttributes(component, node, attributes);
-
+			
+			setAttributes(instance, node, attributes);
+			
 			(vnode.children || []).forEach( child => node.appendChild(render(child)) );
-
+			
 			return node;
+		},
+		createTextNode(text){
+			return document.createTextNode(text);
 		}
-
-		return document.createTextNode(args)
 	});
 
 /**
