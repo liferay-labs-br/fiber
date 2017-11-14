@@ -1,4 +1,4 @@
-import updateQueue from './updateQueue'
+import updateQueue from './FiberUpdateQueue'
 
 class Component {
   /**

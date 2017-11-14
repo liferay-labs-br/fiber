@@ -1,4 +1,4 @@
-import { render, createElement } from '../src/fiber';
+import { render, createElement } from '../src/Fiber';
 
 let Foo;
 

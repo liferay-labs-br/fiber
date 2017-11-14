@@ -1,4 +1,4 @@
-import { buildComponentFromVNode } from './createComponent'
+import { buildComponentFromVNode } from './FiberCreateComponent'
 
 let component;
 
@@ -22,7 +22,7 @@ const renderFactory = (vnode, {createInstance, createTextNode}) => {
 
 		component = component.instance;
 	}
-	
+
 	return createInstance(vnode, component);
 };
 
