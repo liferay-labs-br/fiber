@@ -1,6 +1,5 @@
 import babel from 'rollup-plugin-babel';
 import babelrc from 'babelrc-rollup';
-import eslint from 'rollup-plugin-eslint';
 
 const babelConfig = {
   'presets': [
@@ -14,7 +13,7 @@ const babelConfig = {
 };
 
 export default {
-  input: 'src/fiber.js',
+  input: 'src/Fiber.js',
   output: {
     format: 'umd',
     file: 'build/fiber.js',
