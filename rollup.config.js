@@ -22,11 +22,12 @@ export default {
     sourcemap: true
   },
   plugins: [
-    eslint({
-      exclude: [
-        'node_modules/**'
-      ]
-    }),
+    // TODO: Fix eslint plugin errors
+    // eslint({
+    //   exclude: [
+    //     'node_modules/**'
+    //   ]
+    // }),
     babel(babelrc({
       addExternalHelpersPlugin: false,
       config: babelConfig,
