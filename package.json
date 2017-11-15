@@ -1,6 +1,6 @@
 {
   "name": "fiber",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The framework specialized in animated components.",
   "main": "build/Fiber.js",
   "jsnext:main": "src/Fiber.js",
