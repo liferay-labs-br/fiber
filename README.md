@@ -69,8 +69,8 @@ Make sure your pull requests are within scope and that you follow the project as
 > 🚨 Submit your pull solipsies with tests if necessary.
 
 -   Fork it!
--   Clone your fork: `git clone https://github.com/<your-username>/sprint`
--   Navigate to the newly cloned directory: `cd sprint`
+-   Clone your fork: `git clone https://github.com/<your-username>/fiber`
+-   Navigate to the newly cloned directory: `cd fiber`
 -   Create a new branch for the new feature: `git checkout -b new-feature`
 -   Install the tools necessary for development: `yarn`
 -   Make your changes.
